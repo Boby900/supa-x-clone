@@ -2,7 +2,7 @@
     import { onMount } from 'svelte'
     import type { AuthSession } from '@supabase/supabase-js'
     import { supabase } from './supabaseClient'
-  
+    import Avatar from './Avatar.svelte';
     export let session: AuthSession
   
     let loading = false
@@ -84,6 +84,7 @@
         {loading ? 'Saving ...' : 'Update profile'}
       </button>
     </div>
+    <Avatar bind:url="{avatarUrl}" size="{150}" on:upload="{updateProfile}" />
     <button type="button" class="button block" on:click={() => supabase.auth.signOut()}> Sign Out
     </button>
   </form>
