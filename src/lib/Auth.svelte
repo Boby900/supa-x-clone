@@ -1,6 +1,7 @@
 <script lang="ts">
     import { supabase } from './supabaseClient'
-  
+	import Button from './components/ui/button/button.svelte';
+	import { Badge } from "$lib/components/ui/badge/index.js";
     let loading = false
     let email = ''
   
@@ -22,8 +23,8 @@
   
   <div class="row flex-center flex">
     <div class="col-6 form-widget" aria-live="polite">
-      <h1 class="text-3xl font-bold underline">Supabase + Svelte</h1>
-      <p class="description bg-gray-600 ">Sign in via magic link with your email below</p>
+      <h1 class="text-3xl font-extrabold  underline">Supabase + Svelte</h1>
+      <p class="description bg-gray-300 ">Sign in via magic link with your email below</p>
       <form class="form-widget" on:submit|preventDefault="{handleLogin}">
         <div>
           <label for="email">Email</label>
@@ -35,6 +36,10 @@
             bind:value="{email}"
           />
         </div>
+		<div>
+			<Button>Click Me</Button>
+			<Badge>Shadcn-Ui</Badge>
+		</div>
         <div>
           <button type="submit" class="button block" aria-live="polite" disabled="{loading}">
             <span>{loading ? 'Loading' : 'Send magic link'}</span>
